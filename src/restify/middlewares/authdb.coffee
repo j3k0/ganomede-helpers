@@ -1,5 +1,4 @@
 restify = require 'restify'
-expect = require 'expect.js'
 
 # Populates req.params.user with value returned from authDb.getAccount()
 module.exports =
