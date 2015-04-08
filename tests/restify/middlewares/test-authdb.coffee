@@ -6,7 +6,7 @@ authdbMiddleware = require '../../../src/restify/middlewares/authdb'
 
 describe 'restify.middlewares.authdb', () ->
 
-  it 'accessible through restify.middlewares.authdb', ->
+  it 'is accessible through restify.middlewares.authdb', ->
     expect(helpers.restify.middlewares.authdb).to.be.ok()
 
   it 'requires a authdbClient', ->
