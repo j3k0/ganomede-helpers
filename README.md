@@ -1,14 +1,22 @@
 # Ganomede Helpers
 
-install with `npm install --save ganomede-helpers`
+## Install
 
-## restify.middlewares.authdb
+Install with `npm install --save ganomede-helpers`
 
-### create(options)
+## Usage
 
-Returns a restify middleware function, that requires `authToken` as a request parameter and fills the virtual `user` query parameter with the full user account details.
+```js
+var helpers = require("ganomede-helpers");
+```
 
-Options:
+## helpers.restify.middlewares.authdb
+
+### create: function(options)
+
+**Options**:
 
  * authdbClient [required]: a authdb client as created using the authdb library
  * log: a bunyan style logger object
+
+**Returns** a restify middleware function. This function requires `authToken` as a request parameter and fills the virtual `user` query parameter with the full user account details.
