@@ -1,8 +1,13 @@
 expect = require 'expect.js'
 restify = require 'restify'
+
+helpers = require '../../../index'
 authdbMiddleware = require '../../../src/restify/middlewares/authdb'
 
 describe 'restify.middlewares.authdb', () ->
+
+  it 'accessible through restify.middlewares.authdb', ->
+    expect(helpers.restify.middlewares.authdb).to.be.ok()
 
   it 'requires a authdbClient', ->
     expect(authdbMiddleware.create).to.throwError()
