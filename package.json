@@ -18,5 +18,16 @@
   "bugs": {
     "url": "https://github.com/j3k0/ganomede-helpers/issues"
   },
+  "dependencies": {
+    "authdb": "~0.1.0",
+    "bunyan": "~1.2.3",
+    "coffee-script": "~1.8.0",
+    "coffeelint": "~1.6.1",
+    "eslint": "~0.10.0",
+    "jshint": "~2.5.10",
+    "mocha": "~2.0.1",
+    "restify": "~2.8.3",
+    "vasync": "~1.6.2"
+  },
   "homepage": "https://github.com/j3k0/ganomede-helpers"
 }
