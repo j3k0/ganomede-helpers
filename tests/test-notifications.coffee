@@ -50,18 +50,22 @@ describe 'Notification', () ->
       expect(n).not.to.have.property('id')
       expect(n).not.to.have.property('timestamp')
 
-  describe '#send()', () ->
+  describe '.send() / .sendFn()', () ->
     server = http.createServer (req, res) ->
       res.setHeader('content-type', 'application/json')
       res.end(JSON.stringify(expectedReply))
 
+    process.env.NOTIFICATIONS_PORT_8080_TCP_ADDR = 'localhost'
+    process.env.NOTIFICATIONS_PORT_8080_TCP_PORT = 1337
+
     expectedReply = {ok: true}
+    sendNotification = Notification.sendFn()
 
     before (done) -> server.listen(1337, 'localhost', done)
     after (done) -> server.close(done)
 
-    it 'works', (done) ->
-      createWithDefaults().send 'localhost:1337', (err, res) ->
+    it '.send()', (done) ->
+      sendNotification createWithDefaults(), (err, res) ->
         expect(err).to.be(null)
         expect(res).to.eql(expectedReply)
         done()
