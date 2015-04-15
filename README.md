@@ -71,17 +71,25 @@ Helper class allowing easier sending of notifications from ganomede services.
 
 ### example
 ```js
+// Create notificaiton.
 var notification = new helpers.Notification(
+  // Fill in required fields:
   from: 'ganomede-service',
   to: 'username',
   type: 'sample-notification',
+  // Fill in optional fields as neccessary:
   data: {sample: 'data'},
-  secret: 'api-secret'
+  secret: 'api-secret' // defaults to process.env.API_SECRET
 );
 
+// send() function bound to NOTIFICATION service address
+// (set as ENV variable retrieved by ServiceEnv class).
 var sendNotification = helpers.Notification.sendFn();
 
+// Send notification.
 sendNotification(notification, function (err, response) {
-  // ...
+  // When notification is sent, it will have `id` and `timestamp`
+  // set by notification service. For more details, see:
+  // https://github.com/j3k0/ganomede-notifications#send-a-message-post.
 });
 ```
