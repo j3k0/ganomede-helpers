@@ -64,3 +64,24 @@ generates and `http://` URL using `host` and `port`.
 ```js
 var couch = myLib.connect(helpers.links.ServiceEnv.url('COUCH_GAMES', 5984))
 ```
+
+## helpers.Notification
+
+Helper class allowing easier sending of notifications from ganomede services.
+
+### example
+```js
+var notification = new helpers.Notification(
+  from: 'ganomede-service',
+  to: 'username',
+  type: 'sample-notification',
+  data: {sample: 'data'},
+  secret: 'api-secret'
+);
+
+var sendNotification = helpers.Notification.sendFn();
+
+sendNotification(notification, function (err, response) {
+  // ...
+});
+```
