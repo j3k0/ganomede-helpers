@@ -1,6 +1,6 @@
 http = require 'http'
 expect = require 'expect.js'
-Notification = require '../src/notification'
+Notification = (require '../index').Notification
 
 describe 'Notification', () ->
   createWithDefaults = (fields={}) ->
