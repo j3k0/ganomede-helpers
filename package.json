@@ -1,6 +1,6 @@
 {
   "name": "ganomede-helpers",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Helper modules shared by ganomede microservices",
   "main": "index.js",
   "scripts": {
