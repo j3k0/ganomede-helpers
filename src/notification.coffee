@@ -53,7 +53,10 @@ class Notification
         throw new Error("Notification.sendFn() failed to
           find NOTIFICATIONS service address in environment variables")
 
-      return () -> # noop
+      # noop
+      return () ->
+        callback = arguments[arguments.length - 1]
+        callback?(null)
 
     uri = ServiceEnv.url('NOTIFICATIONS', 8080)
     return Notification.send.bind(Notification, uri)
