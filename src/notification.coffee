@@ -58,8 +58,10 @@ class Notification
         callback = arguments[arguments.length - 1]
         callback?(null)
 
-    uri = ServiceEnv.url('NOTIFICATIONS', 8080)
-    return Notification.send.bind(Notification, uri)
+    baseURL = ServiceEnv.url('NOTIFICATIONS', 8080)
+    url = "#{baseURL}/notifications/v1/messages"
+    return (notification, callback) ->
+      Notification.send(url, notification, callback)
 
   @REQUIRED_KEYS: ['from', 'to', 'type']
   @OPTIONAL_KEYS: ['data', 'secret']

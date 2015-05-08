@@ -58,7 +58,7 @@ describe 'Notification', () ->
 
     sendNotificationNoop = Notification.sendFn(true)
     process.env.NOTIFICATIONS_PORT_8080_TCP_ADDR = 'localhost'
-    process.env.NOTIFICATIONS_PORT_8080_TCP_PORT = 1337
+    process.env.NOTIFICATIONS_PORT_8080_TCP_PORT = '1337'
     sendNotification = Notification.sendFn()
 
     before (done) -> server.listen(1337, 'localhost', done)
