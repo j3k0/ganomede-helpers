@@ -1,4 +1,9 @@
 class ServiceEnv
+  @config: (name, port) ->
+    exists: ServiceEnv.exists(name, port)
+    host: ServiceEnv.host(name, port)
+    port: ServiceEnv.port(name, port)
+    url: ServiceEnv.url(name, port)
   @addrEnv: (name, port) -> "#{name}_PORT_#{port}_TCP_ADDR"
   @portEnv: (name, port) -> "#{name}_PORT_#{port}_TCP_PORT"
   @exists: (name, port) ->
