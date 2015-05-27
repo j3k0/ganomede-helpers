@@ -31,5 +31,8 @@
     "superagent": "^1.2.0",
     "vasync": "~1.6.2"
   },
-  "homepage": "https://github.com/j3k0/ganomede-helpers"
+  "homepage": "https://github.com/j3k0/ganomede-helpers",
+  "devDependencies": {
+    "supertest": "^1.0.1"
+  }
 }
