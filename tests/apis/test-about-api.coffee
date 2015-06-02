@@ -2,12 +2,13 @@ expect = require 'expect.js'
 supertest = require 'supertest'
 restify = require 'restify'
 aboutApi = require '../../src/apis/about'
+restifyAddons = require '../../src/restify'
 
 CUSTOM_PREFIX = 'custom-prefix'
 CUSTOM_ABOUT = {custom: true}
 
 describe 'About API', () ->
-  server = restify.createServer()
+  server = restifyAddons.createServer()
   api = aboutApi()
   go = supertest.bind(supertest, server)
 

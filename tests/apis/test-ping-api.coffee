@@ -1,10 +1,11 @@
 restify = require 'restify'
 supertest = require 'supertest'
 pingApi = require '../../src/apis/ping'
+restifyAddons = require '../../src/restify'
 
 describe 'Ping API', () ->
   api = pingApi()
-  server = restify.createServer()
+  server = restifyAddons.createServer()
   go = supertest.bind(supertest, server)
   prefix = 'some-prefix'
   token = 'some-token'
