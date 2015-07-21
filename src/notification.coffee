@@ -64,7 +64,7 @@ class Notification
       Notification.send(url, notification, callback)
 
   @REQUIRED_KEYS: ['from', 'to', 'type']
-  @OPTIONAL_KEYS: ['data', 'secret']
+  @OPTIONAL_KEYS: ['data', 'push', 'secret']
   @SERVERSIDE_KEYS: ['id', 'timestamp'] # These are filled in
                                         # by notification service
 
