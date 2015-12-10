@@ -47,17 +47,17 @@ class Chat
       noop = () ->
         callback = arguments[arguments.length - 1]
         callback?(null)
-      noop.name = "noop"
+      noop.fname = "noop"
       noop.details = "Failed to" +
         " find CHAT service address in environment variables"
       return noop
 
     baseURL = ServiceEnv.url('CHAT', 8080)
-    url = "#{baseURL}/chats/v1/auth/" +
+    url = "#{baseURL}/chat/v1/auth/" +
       process.env.API_SECRET + "/system-messages"
     ret = (chat, callback) ->
       Chat.send(url, chat, callback)
-    ret.name = "send"
+    ret.fname = "send"
     ret.details = "Send to " + url
     return ret
 
