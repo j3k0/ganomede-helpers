@@ -40,19 +40,26 @@ class Chat
   @sendFn: (noopIfNotFound) ->
     unless ServiceEnv.exists('CHAT', 8080)
       unless noopIfNotFound
-        throw new Error("Chat.sendFn() failed to
-          find CHAT service address in environment variables")
+        throw new Error("Chat.sendFn() failed to" +
+          " find CHAT service address in environment variables")
 
       # noop
-      return () ->
+      noop = () ->
         callback = arguments[arguments.length - 1]
         callback?(null)
+      noop.name = "noop"
+      noop.details = "Failed to" +
+        " find CHAT service address in environment variables"
+      return noop
 
     baseURL = ServiceEnv.url('CHAT', 8080)
     url = "#{baseURL}/chats/v1/auth/" +
       process.env.API_SECRET + "/system-messages"
-    return (chat, callback) ->
+    ret = (chat, callback) ->
       Chat.send(url, chat, callback)
+    ret.name = "send"
+    ret.details = "Send to " + url
+    return ret
 
   @REQUIRED_KEYS: ['users', 'type', 'message', 'timestamp']
 
