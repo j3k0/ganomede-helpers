@@ -6,6 +6,10 @@
   "scripts": {
     "test": "make test"
   },
+  "engines": {
+    "node": ">=5",
+    "npm": ">=3"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/j3k0/ganomede-helpers.git"

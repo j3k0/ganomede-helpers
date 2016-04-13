@@ -24,6 +24,9 @@ module.exports =
     # authorizing via secret means that authToken is:
     #   process.env.API_SECRET + SECRET_SEPARATOR + username
     secret = if options.secret then options.secret + SECRET_SEPARATOR else false
+    if options.hasOwnProperty('secret')
+      unless typeof options.secret == 'string' && options.secret.length > 0
+        throw new Error "options.secret must be non-empty string"
 
     parseUsernameFromSecretToken = (token) ->
       # make sure we have both, secret and username parts

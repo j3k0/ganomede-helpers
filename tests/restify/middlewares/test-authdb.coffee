@@ -77,4 +77,17 @@ describe 'restify.middlewares.authdb', () ->
         expect(params.user).to.be(undefined)
         done()
 
+    it 'if passed in, options.secret must be a non-empty string', () ->
+      expect(authdbMiddleware.create)
+        .withArgs({authdbClient: {}, secret: undefined})
+        .to.throwException(/options\.secret/)
+
+      expect(authdbMiddleware.create)
+        .withArgs({authdbClient: {}, secret: 42})
+        .to.throwException(/options\.secret/)
+
+      expect(authdbMiddleware.create)
+        .withArgs({authdbClient: {}, secret: null})
+        .to.throwException(/options\.secret/)
+
 # vim: ts=2:sw=2:et:
