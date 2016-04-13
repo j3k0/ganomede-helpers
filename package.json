@@ -33,6 +33,7 @@
   },
   "homepage": "https://github.com/j3k0/ganomede-helpers",
   "devDependencies": {
+    "lodash": "^4.11.0",
     "supertest": "^1.0.1"
   }
 }
