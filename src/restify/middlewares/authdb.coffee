@@ -30,7 +30,7 @@ module.exports =
 
     parseUsernameFromSecretToken = (token) ->
       # make sure we have both, secret and username parts
-      valid = token.startsWith(secret) && token.length > secret.length
+      valid = (0 == token.indexOf(secret)) && (token.length > secret.length)
       username = if valid then token.slice(secret.length) else null
       return username
 
