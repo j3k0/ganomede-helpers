@@ -1,5 +1,7 @@
 restify = require 'restify'
 supertest = require 'supertest'
+superagent = require 'superagent'
+expect = require 'expect.js'
 pingApi = require '../../src/apis/ping'
 restifyAddons = require '../../src/restify'
 
@@ -26,6 +28,12 @@ describe 'Ping API', () ->
         .expect(200, expectedResponse, done)
 
     it 'HEAD', (done) ->
-      go()
-        .head(endpoint)
-        .expect(200, done)
+      addr = server.address()
+      uri = "http://localhost:#{addr.port}#{endpoint}"
+      superagent
+        .head(uri)
+        .end (err, res) ->
+          expect(err).to.be(null)
+          expect(res.statusCode).to.be(200)
+          done()
+
