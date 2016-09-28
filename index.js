@@ -1,2 +1,3 @@
-require('coffee-script/register');
+'use strict';
+
 module.exports = require('./src');

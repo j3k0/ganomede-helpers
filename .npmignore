@@ -1,0 +1,5 @@
+.gitignore
+Makefile
+*.coffee
+*.sublime-*
+tests/

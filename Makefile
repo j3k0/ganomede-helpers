@@ -4,11 +4,13 @@ SHELL = /bin/bash -o pipefail
 all: install test
 
 check: install
-	./node_modules/.bin/eslint src/
 	./node_modules/.bin/coffeelint -q src tests
 
 test: check
 	./node_modules/.bin/mocha -b --recursive --compilers coffee:coffee-script/register tests | ./node_modules/.bin/bunyan -l ${BUNYAN_LEVEL}
+
+testw:
+	./node_modules/.bin/mocha --watch -b --recursive --compilers coffee:coffee-script/register tests | ./node_modules/.bin/bunyan -l ${BUNYAN_LEVEL}
 
 coverage: test
 	@mkdir -p doc
@@ -25,4 +27,6 @@ node_modules: package.json
 	@touch node_modules
 
 clean:
+	find src/**/*.js | xargs rm
 	rm -fr node_modules
+
