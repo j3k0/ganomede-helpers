@@ -7,7 +7,7 @@
     "test": "make test",
     "testw": "make testw",
     "compile": "coffee --compile src/",
-    "prepublish": "find \"src/**/*.js\" | xargs rm && npm run test && npm run compile"
+    "prepublish": "find src/ -name \"*.js\" -delete && npm run test && npm run compile"
   },
   "engines": {
     "node": ">=5",
