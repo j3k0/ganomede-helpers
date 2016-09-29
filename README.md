@@ -12,14 +12,22 @@ var helpers = require("ganomede-helpers");
 
 ## helpers.restify.middlewares.authdb
 
-Simplifies the integration of restify servers with authdb.
+Simplifies the integration of restify servers with authdb. Will check `req.params.authToken` agains passed in [authdb client](https://github.com/j3k0/node-authdb) and fill out `req.params.user` with result. Replies with HTTP 400 in case of missing token; or 401 in case of error or missing account.
 
 ### create: function(options)
 
 **Options**:
 
- * authdbClient [required]: a authdb client as created using the authdb library
- * log: a bunyan style logger object
+ * `authdbClient` [required]: a authdb client as created using the authdb library
+ * `secret`: allows "spoofing" `req.params.user` in case `authToken` matches `${secret}.${username}` pattern. Will skip validating token and run following instead:
+
+ ``` js
+  req.params.user = {
+    _secret: true
+    username: spoofUsername // second part of token
+  }
+ ```
+ * `log`: a bunyan style logger object
 
 **Returns** a restify middleware function. This function requires `authToken` as a request parameter and fills the virtual `user` query parameter with the full user account details.
 
