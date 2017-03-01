@@ -23,11 +23,11 @@ class ServiceEnv
         url += ":#{port}"
       return url
   @host: (name, port) ->
-    return process.env[@addrEnv name, port] || '127.0.0.1'
+    process.env[@addrEnv(name, port)] || '127.0.0.1'
   @port: (name, port) ->
-    return +(process.env[@portEnv name, port] || port)
+    +(process.env[@portEnv(name, port)] || port)
   @protocol: (name, port) ->
-    return +(process.env[@protocolEnv name, port] || 'http')
+    process.env[@protocolEnv(name, port)] || 'http'
 
 module.exports = ServiceEnv
 # vim: ts=2:sw=2:et:
