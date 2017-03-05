@@ -9,8 +9,7 @@ class ServiceEnv
   @portEnv: (name, port) -> "#{name}_PORT_#{port}_TCP_PORT"
   @protocolEnv: (name, port) -> "#{name}_PORT_#{port}_TCP_PROTOCOL"
   @exists: (name, port) ->
-    return process.env.hasOwnProperty(@addrEnv name,port) &&
-      process.env.hasOwnProperty(@portEnv name,port)
+    process.env.hasOwnProperty(@addrEnv name,port)
   @url: (name, port) ->
     if !@exists name, port
       return undefined
